@@ -1,0 +1,94 @@
+{
+  "orase": [
+    {
+      "id": "1",
+      "oras": "Madrid",
+      "tara": "Spania",
+      "pret": 520
+    },
+    {
+      "id": "2",
+      "oras": "Barcelona",
+      "tara": "Spania",
+      "pret": 480
+    },
+    {
+      "id": "3",
+      "oras": "Praga",
+      "tara": "Cehia",
+      "pret": 310
+    },
+    {
+      "id": "4",
+      "oras": "Viena",
+      "tara": "Austria",
+      "pret": 390
+    }
+  ],
+  "destinatii": [
+    {
+      "id": "1",
+      "oras": "Lisabona",
+      "tara": "Portugalia",
+      "zile": 4,
+      "vizitat": false
+    },
+    {
+      "id": "2",
+      "oras": "Cluj-Napoca",
+      "tara": "România",
+      "zile": 2,
+      "vizitat": true
+    },
+    {
+      "id": "3",
+      "oras": "Porto",
+      "tara": "Portugalia",
+      "zile": 3,
+      "vizitat": false
+    },
+    {
+      "id": "4",
+      "oras": "Brașov",
+      "tara": "România",
+      "zile": 2,
+      "vizitat": true
+    },
+    {
+      "id": "5",
+      "oras": "Kyoto",
+      "tara": "Japonia",
+      "zile": 6,
+      "vizitat": false
+    },
+    {
+      "id": "6",
+      "oras": "Tokyo",
+      "tara": "Japonia",
+      "zile": 5,
+      "vizitat": false
+    },
+    {
+      "oras": "Mioveni",
+      "tara": "Romania",
+      "zile": 10,
+      "vizitat": false,
+      "id": "G-80VUOQLl8"
+    },
+    {
+      "oras": "Mioveni",
+      "tara": "Romania",
+      "zile": "3",
+      "vizitat": false,
+      "id": "bG-yfruWs10"
+    },
+    {
+      "oras": "Pitesti",
+      "tara": "Romania",
+      "zile": "3",
+      "vizitat": true,
+      "id": "mT4lUifmV44"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

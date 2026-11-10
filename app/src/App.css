@@ -88,3 +88,39 @@ button {
   background: #e5e7eb;
   color: #374151;
 }
+
+.stare {
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  background: #eff6ff;
+  color: #1e40af;
+}
+
+.stare.eroare {
+  background: #fef2f2;
+  color: #991b1b;
+}
+
+.formular input.invalid {
+  border-color: #f87171;
+  background: #fef2f2;
+}
+
+.eroare-camp {
+  margin: 0.3rem 0 0 0;
+  font-size: 0.8rem;
+  color: #dc2626;
+}
+
+button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.gol {
+  padding: 1.5rem;
+  border: 2px dashed #d1d5db;
+  border-radius: 8px;
+  text-align: center;
+  color: #6b7280;
+}

@@ -6,3 +6,13 @@ export const destinatii = [
   { id: '5', oras: 'Kyoto', tara: 'Japonia', zile: 6, vizitat: false },
   { id: '6', oras: 'Tokyo', tara: 'Japonia', zile: 5, vizitat: false },
 ]
+
+export async function deleteDestinatie(id) {
+  const response = await fetch(`http://localhost:3001/destinatii/${id}`, {
+    method: 'DELETE',
+  })
+  if (!response.ok) {
+    throw new Error(`Serverul a răspuns cu ${response.status}`)
+  }
+  return response.json()
+}
