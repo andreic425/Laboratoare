@@ -1,64 +1,66 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
+import { getStatistici } from '../api/statistici.js'
 
 export default function PanouStatistici() {
-  const [destinatii, setDestinatii] = useState([]);
-  const [incarcare, setIncarcare] = useState(true);
-  const [eroare, setEroare] = useState(null);
-  const [prag, setPrag] = useState('3');
+  const [prag, setPrag] = useState('3')
+  const [tara, setTara] = useState('')
+  const [stat, setStat] = useState(null)
+  const [incarcare, setIncarcare] = useState(true)
+  const [eroare, setEroare] = useState(null)
 
   useEffect(() => {
+    let anulat = false
     async function incarca() {
+      setIncarcare(true)
       try {
-        const response = await fetch('http://localhost:3001/destinatii');
-        if (!response.ok) {
-          throw new Error(`Serverul a răspuns cu ${response.status}`);
+        const date = await getStatistici(prag, tara.trim())
+        if (!anulat) {
+          setStat(date)
+          setEroare(null)
         }
-        const date = await response.json();
-        setDestinatii(date);
       } catch (err) {
-        setEroare(err.message);
+        if (!anulat) setEroare(err.message)
       } finally {
-        setIncarcare(false);
+        if (!anulat) setIncarcare(false)
       }
     }
-    incarca();
-  }, []);
-
-  if (incarcare) {
-    return <p className="stare">Se încarcă statisticile...</p>;
-  }
-  if (eroare) {
-    return <p className="stare eroare">Statistici indisponibile: {eroare}</p>;
-  }
-
-  const filtrate = destinatii.filter((d) => d.zile >= Number(prag));
-  const totalzile = filtrate.reduce((suma, d) => suma + d.zile, 0);
-  const medie = filtrate.length === 0 ? 0 : totalzile / filtrate.length;
+    incarca()
+    return () => {
+      anulat = true
+    }
+  }, [prag, tara])
 
   return (
     <section className="panou">
       <h2>Statistici</h2>
       <label>
         Cel puțin{' '}
+        <input type="number" value={prag} onChange={(e) => setPrag(e.target.value)} /> zile
+      </label>{' '}
+      <label>
+        Țara{' '}
         <input
-          type="number"
-          value={prag}
-          onChange={(e) => setPrag(e.target.value)}
-        />{' '}
-        zile
+          type="text"
+          value={tara}
+          placeholder="toate"
+          onChange={(e) => setTara(e.target.value)}
+        />
       </label>
 
-      {filtrate.length === 0 && (
+      {incarcare && <p className="stare">Se încarcă statisticile...</p>}
+      {!incarcare && eroare && (
+        <p className="stare eroare">Statistici indisponibile: {eroare}</p>
+      )}
+      {!incarcare && !eroare && stat && stat.destinatii === 0 && (
         <p className="gol">Nicio destinație cu cel puțin {prag} zile.</p>
       )}
-
-      {filtrate.length > 0 && (
+      {!incarcare && !eroare && stat && stat.destinatii > 0 && (
         <ul>
-          <li>Destinații: {filtrate.length}</li>
-          <li>Total zile: {totalzile}</li>
-          <li>Media: {medie.toFixed(1)} zile</li>
+          <li>Destinații: {stat.destinatii}</li>
+          <li>Total zile: {stat.zile}</li>
+          <li>Media: {stat.medie} zile</li>
         </ul>
       )}
     </section>
-  );
+  )
 }

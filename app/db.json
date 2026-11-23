@@ -67,28 +67,9 @@
       "tara": "Japonia",
       "zile": 5,
       "vizitat": false
-    },
-    {
-      "oras": "Mioveni",
-      "tara": "Romania",
-      "zile": 10,
-      "vizitat": false,
-      "id": "G-80VUOQLl8"
-    },
-    {
-      "oras": "Mioveni",
-      "tara": "Romania",
-      "zile": "3",
-      "vizitat": false,
-      "id": "bG-yfruWs10"
-    },
-    {
-      "oras": "Pitesti",
-      "tara": "Romania",
-      "zile": "3",
-      "vizitat": true,
-      "id": "mT4lUifmV44"
     }
+    
+      
   ],
   "$schema": "./node_modules/json-server/schema.json"
 }
